@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本の祝日一覧と今年の土日祝日数｜西暦 ↔ 和暦・民國 早見表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="今年の日本の祝日一覧と、土日祝がお休み候補になる日数を簡易計算するページです。">
+
+  <!-- 共用スタイル -->
+  <link rel="stylesheet" href="style.css">
+   <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6450827345498682"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title">日本の祝日一覧・今年の土日祝日数の計算ツール</h1>
+    <p class="site-subtitle">
+      今年の日本の祝日を一覧で確認できます。合わせて、土日と祝日を合わせた「お休み候補日数」もざっくり計算します。<br>
+      在這裡查看今年的日本所有國定假日。幫你掌握「週末加上國定假日」的可休日期數，方便你進行年度規劃。
+    </p>
+</header>
+
+  <!-- 頂部頁面遷移 -->
+  <nav class="site-nav">
+    <div class="container site-nav-inner">
+      <a href="index.html" class="site-nav-link">早見表</a>
+      <a href="datediff.html" class="site-nav-link">日数差計算</a>
+      <a href="holidays.html" class="site-nav-link active">祝日一覧</a>
+    </div>
+  </nav>
+
+<main class="main-content">
+  <div class="container">
+      <!-- 頂部廣告 -->
+      <section class="ad-top-wrapper">
+        <div class="ad-slot ad-slot--top">
+          預留廣告區（上方）
+        </div>
+      </section>
+
+    <div class="layout-two-column">
+      
+      <div class="layout-main">
+
+        <!-- 今年の土日祝日数 -->
+        <article class="card">
+          <header class="card-header">
+            <h2 id="summary-title">今年の土日祝日数</h2>
+          </header>
+
+          <p id="summary-text">データを読み込み中です…</p>
+
+          <ul id="summary-list">
+            <li>年間の日数：— 日</li>
+            <li>土日の日数：— 日</li>
+            <li>祝日の日数：— 日</li>
+            <li>土日祝：— 日</li>
+            <li>勤務日：— 日</li>
+          </ul>
+
+          <p style="font-size:0.8rem;color:#607d8b;margin-top:0.6rem;">
+            ※ 振替休日など細かい規則には対応していない簡易計算です。
+          </p>
+        </article>
+
+        <!-- 祝日一覧 -->
+        <article class="card" style="margin-top:1rem;">
+          <header class="card-header">
+            <h2 id="list-title">今年の日本の祝日一覧</h2>
+          </header>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">日付</th>
+                  <th scope="col">曜日</th>
+                  <th scope="col">祝日名</th>
+                </tr>
+              </thead>
+              <tbody id="holiday-tbody"></tbody>
+            </table>
+          </div>
+        </article>
+
+      </div>
+
+      <aside class="layout-sidebar">
+
+        <section class="holiday-mini-card">
+          <a href="index.html" class="holiday-link">
+            <div class="holiday-mini-box">
+                <h3 id="side-holiday-title">和暦早見表</h3>
+                <p id="side-holiday-detail">西暦との対応をすぐに確認しましょう。</p>
+            </div>
+          </a>
+        </section>
+
+        <section class="ad-sidebar">
+          <div class="ad-slot ad-slot--side">サイド広告（上）</div>
+          <div class="ad-slot ad-slot--side">サイド広告（下）</div>
+        </section>
+      </aside>
+      <!-- 説明 -->
+      <section class="info-section">
+      
+        <!-- 祝日解説 -->
+        <div class="card" style="margin-top:1.5rem;">
+          <header class="card-header">
+            <h2>日本の祝日について</h2>
+          </header>
+      
+          <h3>【祝日の基本】</h3>
+          <ul>
+            <li>日本の祝日は「国民の祝日に関する法律」によって定められています。</li>
+            <li>固定日と移動祝日（ハッピーマンデー制度）の 2 種類があります。</li>
+            <li>春分・秋分は天文計算にもとづき年度によって変動します。</li>
+          </ul>
+      
+          <h3>【ゴールデンウィーク】</h3>
+          <p>
+            4 月末〜5 月初旬は祝日が集中し、「ゴールデンウィーク」と呼ばれる長期休暇になりやすい時期です。
+          </p>
+      
+          <h3>【祝日の使われ方】</h3>
+          <ul>
+            <li>年間の休暇計画の作成に。</li>
+            <li>ビジネスの納期調整の参考に。</li>
+            <li>銀行・役所の休業日確認に。</li>
+          </ul>
+      
+          <p style="font-size:0.9rem;color:#607d8b;">
+            ※ 年度によって祝日や振替休日が異なる場合があります。最新情報は公的発表をご確認ください。
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © <span id="current-year"></span> 西暦 ↔ 和暦・民國 早見表
+      ｜ <a href="privacy.html">プライバシーポリシー</a>
+    </p>
+  </div>
+</footer>
+
+<!-- 祝日データ（JAPANESE_HOLIDAYS, getNextJapaneseHoliday など） -->
+<script src="holidays-ja.js"></script>
+
+<script>
+// =========================================================
+// holidays-ja.js のデータ構造：
+//   JAPANESE_HOLIDAYS = [ { month:1, day:1, name:"元日" }, ... ]
+// =========================================================
+
+const WEEKDAY_JP = ["日", "月", "火", "水", "木", "金", "土"];
+
+function dateKey(date) {
+  return (
+    date.getFullYear() + "-" +
+    String(date.getMonth() + 1).padStart(2, "0") + "-" +
+    String(date.getDate()).padStart(2, "0")
+  );
+}
+
+// holidays-ja.js の祝日データを指定年に展開
+function getYearHolidays(year) {
+  return JAPANESE_HOLIDAYS.map(h => {
+    const d = new Date(year, h.month - 1, h.day);
+    return { name: h.name, date: d };
+  }).sort((a, b) => a.date - b.date);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const now = new Date();
+  const year = now.getFullYear();
+
+  // フッターの年
+  document.getElementById("current-year").textContent = year;
+
+  // タイトル
+  document.getElementById("summary-title").textContent =
+    `${year}年の土日祝日数`;
+  document.getElementById("list-title").textContent =
+    `${year}年の日本の祝日一覧`;
+
+  // --- 祝日一覧取得 ---
+  const holidays = getYearHolidays(year);
+
+  // 次の祝日（今日以降でもっとも近い一日）を特定
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  let nextHolidayKey = null;
+  for (const h of holidays) {
+    const d = new Date(h.date.getTime());
+    d.setHours(0, 0, 0, 0);
+    if (d >= today) {
+      nextHolidayKey = dateKey(d);
+      break;
+    }
+  }
+  // もし今年の祝日がすでに全部過ぎている場合は、一覧の先頭をハイライト
+  if (!nextHolidayKey && holidays.length > 0) {
+    nextHolidayKey = dateKey(holidays[0].date);
+  }
+
+  // *** 祝日一覧テーブル描画（次の祝日を highlight）***
+  const tbody = document.getElementById("holiday-tbody");
+  tbody.innerHTML = "";
+
+  holidays.forEach(h => {
+    const tr = document.createElement("tr");
+
+    const d = h.date;
+    const m = d.getMonth() + 1;
+    const day = d.getDate();
+    const key = dateKey(d);
+
+    // 次の祝日なら高光顯示（style.css 裡已有 tbody tr.highlight 的樣式）
+    if (key === nextHolidayKey) {
+      tr.classList.add("highlight");
+    }
+
+    const tdDate = document.createElement("td");
+    tdDate.textContent = `${m}月${day}日`;
+
+    const tdWeek = document.createElement("td");
+    tdWeek.textContent = WEEKDAY_JP[d.getDay()] + "曜日";
+
+    const tdName = document.createElement("td");
+    tdName.textContent = h.name;
+
+    tr.appendChild(tdDate);
+    tr.appendChild(tdWeek);
+    tr.appendChild(tdName);
+    tbody.appendChild(tr);
+  });
+
+  // --- 土日祝 計算 ---
+  const start = new Date(year, 0, 1);
+  const end   = new Date(year, 11, 31);
+
+  const weekendSet = new Set();
+  const holidaySet = new Set();
+
+  holidays.forEach(h => holidaySet.add(dateKey(h.date)));
+
+  let cur = new Date(start);
+  while (cur <= end) {
+    if (cur.getDay() === 0 || cur.getDay() === 6) {
+      weekendSet.add(dateKey(cur));
+    }
+    cur.setDate(cur.getDate() + 1);
+  }
+
+  // 重複しない「土日祝」
+  const offSet = new Set([...weekendSet, ...holidaySet]);
+
+  // 年間日数
+  const totalDays =
+    Math.round((end - start) / 86400000) + 1;
+
+    // 勤務日（簡易計算）
+    const holidayWeekendDays = offSet.size;
+    const workDays = totalDays - holidayWeekendDays;
+
+  // 描画
+  document.getElementById("summary-text").textContent =
+    `${year}年の土日祝の日数を表示します。`;
+
+  document.getElementById("summary-list").innerHTML = `
+    <li>年間の日数：${totalDays} 日</li>
+    <li>土日の日数：${weekendSet.size} 日</li>
+    <li>祝日の日数：${holidaySet.size} 日</li>
+    <li>土日祝：${offSet.size} 日</li>
+    <li>勤務日：${workDays} 日</li>
+  `;
+});
+</script>
+
+</body>
+
+</html>

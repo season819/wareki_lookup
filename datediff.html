@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日数差計算ツール｜西暦 ↔ 和暦・民国 早見表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="2つの日付の差（日数・週数・月数・年数）を簡単に計算できます。カウントダウン、期間確認、在留期限のチェックなどに便利です。">
+
+  <!-- 共用樣式 -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 本頁專用樣式 -->
+  <link rel="stylesheet" href="datediff.css">
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6450827345498682"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title">日数差の計算ツール</h1>
+    <p class="site-subtitle">
+      開始日と終了日を入力するだけで、日数・週数・月数・年数の差を計算できます。カウントダウン、締切日、在留期限チェックなどに便利です。<br>
+      只要輸入開始日和結束日，系統就會自動算出天數、週數、月數、年數的間隔。不管是做倒數、看截止日，還是確認在留期限，都很好用。
+    </p>
+  </div>
+</header>
+
+<!-- 頂部頁面遷移 -->
+<nav class="site-nav">
+  <div class="container site-nav-inner">
+    <a href="index.html" class="site-nav-link">早見表</a>
+    <a href="datediff.html" class="site-nav-link active">日数差計算</a>
+    <a href="holidays.html" class="site-nav-link">祝日一覧</a>
+  </div>
+</nav>
+
+<main class="main-content">
+  <div class="container">
+      <!-- 頂部廣告 -->
+      <section class="ad-top-wrapper">
+        <div class="ad-slot ad-slot--top">
+          預留廣告區（上方）
+        </div>
+      </section>
+
+    <div class="layout-two-column">
+      
+      <!-- 左側主内容 -->
+      <div class="layout-main">
+
+        <article class="card">
+          <header class="card-header">
+            <h2>2つの日付の差を計算</h2>
+          </header>
+
+          <p class="dja-description">
+            用途：締切日チェック、在留期限、旅行日数、勤務日数、カウントダウンなど。
+          </p>
+
+          <div class="dja-group">
+
+            <!-- 入力區塊：第一版設計，和暦／民國顯示在右邊 -->
+            <section class="dja-block">
+              <h3>日付入力</h3>
+
+              <div class="dja-row">
+                <label for="dja-start">開始日</label>
+                <input type="date" id="dja-start">
+                <button class="dja-btn-ghost" id="dja-set-start-today">今日</button>
+                <span class="dja-year-inline">
+                  <span id="dja-start-jp">和暦：—</span>
+                  <span id="dja-start-tw">民国：—</span>
+                </span>
+              </div>
+
+              <div class="dja-row">
+                <label for="dja-end">終了日</label>
+                <input type="date" id="dja-end">
+                <button class="dja-btn-ghost" id="dja-set-end-today">今日</button>
+                <span class="dja-year-inline">
+                  <span id="dja-end-jp">和暦：—</span>
+                  <span id="dja-end-tw">民国：—</span>
+                </span>
+              </div>
+
+              <div class="dja-row dja-row-actions">
+                <button class="dja-btn-ghost" id="dja-swap">入れ替え</button>
+                <button class="dja-btn-ghost" id="dja-clear">クリア</button>
+                <button class="btn-primary" id="dja-calc">計算</button>
+              </div>
+            </section>
+
+            <!-- 結果區塊 -->
+            <section class="dja-block">
+              <h3>計算結果</h3>
+
+              <div class="dja-result" id="dja-result-box">
+                <p id="dja-summary">開始日と終了日を入力して「計算」を押してください。</p>
+                <ul id="dja-detail">
+                  <li>総日数：—</li>
+                  <li>およそ何週間：—</li>
+                  <li>およそ何か月（30日換算）：—</li>
+                  <li>およそ何年（365日換算）：—</li>
+                </ul>
+              </div>
+            </section>
+
+          </div>
+        </article>
+
+        <!-- 下方廣告 -->
+        <section class="ad-wrapper">
+          <div class="ad-slot ad-slot--bottom">
+            広告スペース（下部）
+          </div>
+        </section>
+
+      </div>
+
+      <!-- 右側欄位：與首頁相同的橘色祝日卡片 + 廣告 -->
+      <aside class="layout-sidebar">
+        <section class="holiday-mini-card">
+          <a href="holidays.html" class="holiday-link">
+            <div class="holiday-mini-box">
+              <h3 id="side-holiday-title">今年の祝日を確認</h3>
+              <p id="side-holiday-detail">クリックして土日祝の日数をチェック</p>
+            </div>
+          </a>
+        </section>
+
+        <section class="ad-sidebar">
+          <div class="ad-slot ad-slot--side">サイド広告（上）</div>
+          <div class="ad-slot ad-slot--side">サイド広告（下）</div>
+        </section>
+      </aside>
+
+        <!-- 説明 -->
+        <section class="info-section">
+      
+        <!-- 計算ルール（年号 + 日付差） -->
+        <div class="card">
+          <header class="card-header">
+            <h2>計算結果と計算ルールについて</h2>
+          </header>
+          <p>
+            当サイトでは、西暦・和暦・民国年の変換ツールと、日付差を求める日数計算ツールを提供しています。<br>
+            ここでは、計算の仕組みをわかりやすくまとめています。
+          </p>
+      
+          <h3>【和暦（年号）の計算ルール】</h3>
+          <p>
+            和暦は日本の元号制度および「元号法」にもとづき、次の 5 つの元号に対応しています。
+          </p>
+      
+          <ul>
+            <li>明治（1868 年 1 月 25 日 〜 1912 年 7 月 29 日）</li>
+            <li>大正（1912 年 7 月 30 日 〜 1926 年 12 月 24 日）</li>
+            <li>昭和（1926 年 12 月 25 日 〜 1989 年 1 月 7 日）</li>
+            <li>平成（1989 年 1 月 8 日 〜 2019 年 4 月 30 日）</li>
+            <li>令和（2019 年 5 月 1 日 〜 現在）</li>
+          </ul>
+      
+          <p>
+            計算は次の原則にもとづいて行います。
+          </p>
+      
+          <ul>
+            <li>和暦 → 西暦：<br>西暦 = 元号開始年 + (和暦の年 - 1)<br></li>
+            <li>西暦 → 和暦：<br>和暦の年 = 西暦 - 元号開始年 + 1</li>
+            <li>存在しない年（例：平成 32 年、令和 0 年）はエラーとして扱います。</li>
+            <li>元号は年の途中で切り替わるため、入力された日付に応じて自動で元号を判定します。</li>
+          </ul>
+      
+          <h3>【民国年の計算ルール】</h3>
+          <ul>
+            <li>民国紀元 1 年（1912 年）を基準とし、<br>
+              西暦 = 民国年 + 1911<br>のルールで換算します。
+            </li>
+          </ul>
+
+          <h3>【日付差計算のルール】</h3>
+          <ul>
+            <li>開始日から終了日までの実日数をカレンダー上の差として計算します。</li>
+            <li>うるう年（2 月 29 日）も自動で補正されます。</li>
+            <li>土日祝を除外しない「カレンダー上の単純な日数差」です。</li>
+            <li>週数・月数・年数は目安（概算値）として表示します。</li>
+          </ul>
+      
+          <p style="font-size:0.9rem;color:#607d8b;">
+            ※ 契約期間・在留期限など正式な期間計算が必要な場合は、必ず公式資料でご確認ください。
+          </p>
+        </div>
+      
+        <!-- 利用シーン -->
+        <div class="card" style="margin-top:1.5rem;">
+          <header class="card-header">
+            <h2>このツールが役立つ主な利用シーン</h2>
+          </header>
+      
+          <h3>【年号変換の利用シーン】</h3>
+          <ul>
+            <li>履歴書・職務経歴書で和暦記入が必要なとき。</li>
+            <li>役所の申請書（住民票・戸籍・証明書）で年号を記入するとき。</li>
+            <li>ニュースや文書に出てくる「昭和○年」「平成○年」などの読み替え。</li>
+            <li>台湾の民国紀年を西暦に換算して国際資料と照合したいとき。</li>
+            <li>過去の出来事や年齢計算をすばやく確認したいとき。</li>
+          </ul>
+      
+          <h3>【日付差計算の利用シーン】</h3>
+          <ul>
+            <li>試験日・締切日までの残り日数確認。</li>
+            <li>在留資格更新日までの期間確認。</li>
+            <li>プロジェクト期間・勤務期間の算出。</li>
+            <li>旅行日数・滞在期間の目安計算。</li>
+            <li>契約の開始日・終了日から経過期間を求めるとき。</li>
+          </ul>
+        </div>
+      
+        <!-- FAQ -->
+        <div class="card" style="margin-top:1.5rem;">
+          <header class="card-header">
+            <h2>よくある質問（FAQ）</h2>
+          </header>
+      
+          <h3>Q1. 計算結果はどれくらい正確ですか？</h3>
+          <p>
+            カレンダー上の日付にもとづく計算を行っているため、日常利用においては十分な精度があります。
+            ただし、法的な期間計算や締切判断には公式資料の確認をおすすめします。
+          </p>
+      
+          <h3>Q2. 和暦はどの元号まで対応していますか？</h3>
+          <p>明治・大正・昭和・平成・令和に対応しています。</p>
+      
+          <h3>Q3. 存在しない和暦（例：平成 40 年）はどうなりますか？</h3>
+          <p>元号の範囲外としてエラー表示になります。</p>
+      
+          <h3>Q4. 民国年の扱いは？</h3>
+          <p>民国年は西暦と 1911 年差の換算式を使用しています。</p>
+      
+          <h3>Q5. 入力内容は保存されますか？</h3>
+          <p>
+            一切保存されず、すべてブラウザ内で処理されます。
+            プライバシー情報が外部に送信されることはありません。
+          </p>
+        </div>      
+      </section>
+
+
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © <span id="current-year"></span> 西暦 ↔ 和暦・民国 早見表
+      ｜ <a href="privacy.html">プライバシーポリシー</a>
+    </p>
+  </div>
+</footer>
+
+<!-- 日本の祝日データ（共用） -->
+<script src="holidays-ja.js"></script>
+<!-- 本頁邏輯 -->
+<script src="datediff.js"></script>
+
+</body>
+</html>

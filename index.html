@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>西暦 ↔ 和暦・民國 早見表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="西暦と和暦、それから民国紀年をサッと確認できる早見表です。気になった年をすぐ調べられて、普段使いにも便利です。">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6450827345498682"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">西暦 ↔ 和暦・民國 早見表｜明治・大正・昭和・平成・令和</h1>
+      <p class="site-subtitle">
+        西暦と和暦、それから民国紀年をサッと確認できる早見表です。気になった年をすぐ調べられて、普段使いにも便利です。<br>
+        提供西暦與和暦、民國年對照早見表。提供查找功能，適合日常查詢。
+      </p>
+    </div>
+  </header>
+
+  <!-- 頂部頁面遷移 -->
+  <nav class="site-nav">
+    <div class="container site-nav-inner">
+      <a href="index.html" class="site-nav-link active">早見表</a>
+      <a href="datediff.html" class="site-nav-link">日数差計算</a>
+      <a href="holidays.html" class="site-nav-link">祝日一覧</a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">
+      <!-- 頂部廣告 -->
+      <section class="ad-top-wrapper">
+        <div class="ad-slot ad-slot--top">
+          預留廣告區（上方）
+        </div>
+      </section>
+
+      <div class="layout-two-column">
+
+        <!-- 左側主內容 -->
+        <div class="layout-main">
+
+          <!-- 主分頁標籤 -->
+          <nav class="tabs main-tabs">
+            <button class="tab-button active" data-tab="tab-japanese">
+              西暦 ↔ 和暦
+            </button>
+            <button class="tab-button" data-tab="tab-minguo">
+              西元 ↔ 民國
+            </button>
+          </nav>
+
+          <!-- 分頁內容：西暦 ↔ 和暦 -->
+          <section id="tab-japanese" class="tab-panel active">
+            <article class="card">
+              <header class="card-header">
+                <h2>西暦 ↔ 和暦（明治・大正・昭和・平成・令和）</h2>
+              </header>
+
+              <!-- 日本時代標籤分頁 -->
+              <nav class="tabs era-tabs">
+                <button class="tab-button small" data-era="meiji">明治</button>
+                <button class="tab-button small" data-era="taisho">大正</button>
+                <button class="tab-button small" data-era="showa">昭和</button>
+                <button class="tab-button small" data-era="heisei">平成</button>
+                <button class="tab-button small active" data-era="reiwa">令和</button>
+              </nav>
+
+              <!-- 和暦搜尋區：左右排列 -->
+              <div class="search-group">
+                <!-- 查找：西元 → 和暦 -->
+                <section class="search-block">
+                  <h3>西元年 → 和暦</h3>
+                  <div class="search-row">
+                    <label for="jp-year-input">西元年</label>
+                    <input type="number" id="jp-year-input" inputmode="numeric" placeholder="例如：2024">
+                    <button type="button" id="jp-year-this" class="btn-ghost">今年</button>
+                    <button type="button" id="jp-year-search" class="btn-primary">查找</button>
+                  </div>
+                  <p id="jp-year-result" class="search-result" aria-live="polite"></p>
+                </section>
+
+                <!-- 查找：和暦 → 西元 -->
+                <section class="search-block">
+                  <h3>和暦 → 西元年</h3>
+                  <div class="search-row search-row--era">
+                    <select id="jp-era-select">
+                      <option value="meiji">明治</option>
+                      <option value="taisho">大正</option>
+                      <option value="showa">昭和</option>
+                      <option value="heisei">平成</option>
+                      <option value="reiwa" selected>令和</option>
+                    </select>
+                    <input type="number" id="jp-era-year" inputmode="numeric" placeholder="例如：5">
+                    <button type="button" id="jp-era-this" class="btn-ghost">今年</button>
+                    <button type="button" id="jp-era-search" class="btn-primary">查找</button>
+                  </div>
+                  <p id="jp-era-result" class="search-result" aria-live="polite"></p>
+                </section>
+              </div>
+
+              <!-- 表格：西暦 ↔ 和暦 -->
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">西暦年</th>
+                      <th scope="col">和暦</th>
+                      <th scope="col">年齡</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-japanese">
+                    <!-- 由 JavaScript 動態產生 -->
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <!-- 分頁內容：西元 ↔ 民國 -->
+          <section id="tab-minguo" class="tab-panel">
+            <article class="card">
+              <header class="card-header">
+                <h2>西元 ↔ 民國 早見表</h2>
+              </header>
+
+              <!-- 民國搜尋區：左右排列 -->
+              <div class="search-group">
+                <!-- 查找：西元 → 民國 -->
+                <section class="search-block">
+                  <h3>西元年 → 民國年</h3>
+                  <div class="search-row">
+                    <label for="tw-year-input">西元年</label>
+                    <input type="number" id="tw-year-input" inputmode="numeric" placeholder="例如：2024">
+                    <button type="button" id="tw-year-this" class="btn-ghost">今年</button>
+                    <button type="button" id="tw-year-search" class="btn-primary">查找</button>
+                  </div>
+                  <p id="tw-year-result" class="search-result" aria-live="polite"></p>
+                </section>
+
+                <!-- 查找：民國 → 西元 -->
+                <section class="search-block">
+                  <h3>民國年 → 西元年</h3>
+                  <div class="search-row">
+                    <label for="tw-minguo-year">民國年</label>
+                    <input type="number" id="tw-minguo-year" inputmode="numeric" placeholder="例如：113">
+                    <button type="button" id="tw-minguo-this" class="btn-ghost">今年</button>
+                    <button type="button" id="tw-minguo-search" class="btn-primary">查找</button>
+                  </div>
+                  <p id="tw-minguo-result" class="search-result" aria-live="polite"></p>
+                </section>
+              </div>
+
+              <!-- 表格：西元 ↔ 民國 -->
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">西元年</th>
+                      <th scope="col">民國年</th>
+                      <th scope="col">年齡</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-minguo">
+                    <!-- 由 JavaScript 動態產生 -->
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <!-- 下方廣告預留區 -->
+          <section class="ad-wrapper">
+            <div class="ad-slot ad-slot--bottom">
+              預留廣告區塊（下方）
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 右側：祝日卡片＋廣告欄 -->
+        <aside class="layout-sidebar">
+          <section class="holiday-mini-card">
+            <a href="datediff.html" class="holiday-link">
+              <div class="holiday-mini-box">
+                <h3 id="side-holiday-title">次の祝日を確認</h3>
+                <p id="side-holiday-detail">クリックして日数をチェック</p>
+              </div>
+            </a>
+          </section>
+
+          <section class="ad-sidebar">
+            <div class="ad-slot ad-slot--side">
+              右側廣告預留（上）
+            </div>
+            <div class="ad-slot ad-slot--side">
+              右側廣告預留（下）
+            </div>
+          </section>
+        </aside>
+
+      <!-- 説明 -->
+      <section class="info-section">
+      
+        <!-- 計算ルール（年号 + 日付差） -->
+        <div class="card">
+          <header class="card-header">
+            <h2>計算結果と計算ルールについて</h2>
+          </header>
+          <p>
+            当サイトでは、西暦・和暦・民国年の変換ツールと、日付差を求める日数計算ツールを提供しています。<br>
+            ここでは、計算の仕組みをわかりやすくまとめています。
+          </p>
+      
+          <h3>【和暦（年号）の計算ルール】</h3>
+          <p>
+            和暦は日本の元号制度および「元号法」にもとづき、次の 5 つの元号に対応しています。
+          </p>
+      
+          <ul>
+            <li>明治（1868 年 1 月 25 日 〜 1912 年 7 月 29 日）</li>
+            <li>大正（1912 年 7 月 30 日 〜 1926 年 12 月 24 日）</li>
+            <li>昭和（1926 年 12 月 25 日 〜 1989 年 1 月 7 日）</li>
+            <li>平成（1989 年 1 月 8 日 〜 2019 年 4 月 30 日）</li>
+            <li>令和（2019 年 5 月 1 日 〜 現在）</li>
+          </ul>
+      
+          <p>
+            計算は次の原則にもとづいて行います。
+          </p>
+      
+          <ul>
+            <li>和暦 → 西暦：<br>西暦 = 元号開始年 + (和暦の年 - 1)<br></li>
+            <li>西暦 → 和暦：<br>和暦の年 = 西暦 - 元号開始年 + 1</li>
+            <li>存在しない年（例：平成 32 年、令和 0 年）はエラーとして扱います。</li>
+            <li>元号は年の途中で切り替わるため、入力された日付に応じて自動で元号を判定します。</li>
+          </ul>
+      
+          <h3>【民国年の計算ルール】</h3>
+          <ul>
+            <li>民国紀元 1 年（1912 年）を基準とし、<br>
+              西暦 = 民国年 + 1911<br>のルールで換算します。
+            </li>
+          </ul>
+          
+      
+          <h3>【日付差計算のルール】</h3>
+          <ul>
+            <li>開始日から終了日までの実日数をカレンダー上の差として計算します。</li>
+            <li>うるう年（2 月 29 日）も自動で補正されます。</li>
+            <li>土日祝を除外しない「カレンダー上の単純な日数差」です。</li>
+            <li>週数・月数・年数は目安（概算値）として表示します。</li>
+          </ul>
+      
+          <p style="font-size:0.9rem;color:#607d8b;">
+            ※ 契約期間・在留期限など正式な期間計算が必要な場合は、必ず公式資料でご確認ください。
+          </p>
+        </div>
+      
+        <!-- 利用シーン -->
+        <div class="card" style="margin-top:1.5rem;">
+          <header class="card-header">
+            <h2>このツールが役立つ主な利用シーン</h2>
+          </header>
+      
+          <h3>【年号変換の利用シーン】</h3>
+          <ul>
+            <li>履歴書・職務経歴書で和暦記入が必要なとき。</li>
+            <li>役所の申請書（住民票・戸籍・証明書）で年号を記入するとき。</li>
+            <li>ニュースや文書に出てくる「昭和○年」「平成○年」などの読み替え。</li>
+            <li>台湾の民国紀年を西暦に換算して国際資料と照合したいとき。</li>
+            <li>過去の出来事や年齢計算をすばやく確認したいとき。</li>
+          </ul>
+      
+          <h3>【日付差計算の利用シーン】</h3>
+          <ul>
+            <li>試験日・締切日までの残り日数確認。</li>
+            <li>在留資格更新日までの期間確認。</li>
+            <li>プロジェクト期間・勤務期間の算出。</li>
+            <li>旅行日数・滞在期間の目安計算。</li>
+            <li>契約の開始日・終了日から経過期間を求めるとき。</li>
+          </ul>
+        </div>
+      
+        <!-- FAQ -->
+        <div class="card" style="margin-top:1.5rem;">
+          <header class="card-header">
+            <h2>よくある質問（FAQ）</h2>
+          </header>
+      
+          <h3>Q1. 計算結果はどれくらい正確ですか？</h3>
+          <p>
+            カレンダー上の日付にもとづく計算を行っているため、日常利用においては十分な精度があります。
+            ただし、法的な期間計算や締切判断には公式資料の確認をおすすめします。
+          </p>
+      
+          <h3>Q2. 和暦はどの元号まで対応していますか？</h3>
+          <p>明治・大正・昭和・平成・令和に対応しています。</p>
+      
+          <h3>Q3. 存在しない和暦（例：平成 40 年）はどうなりますか？</h3>
+          <p>元号の範囲外としてエラー表示になります。</p>
+      
+          <h3>Q4. 民国年の扱いは？</h3>
+          <p>民国年は西暦と 1911 年差の換算式を使用しています。</p>
+      
+          <h3>Q5. 入力内容は保存されますか？</h3>
+          <p>
+            一切保存されず、すべてブラウザ内で処理されます。
+            プライバシー情報が外部に送信されることはありません。
+          </p>
+        </div>
+      
+      </section>
+
+      </div>
+    </div>  
+  </main>  
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © <span id="current-year"></span> 西暦 ↔ 和暦・民國 早見表
+        ｜ <a href="privacy.html">プライバシーポリシー</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 先載入祝日資料，再載入主程式 -->
+  <script src="holidays-ja.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
